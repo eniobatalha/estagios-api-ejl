@@ -28,6 +28,7 @@ public class EstagioController {
 
     @PostMapping
     public Estagio salvar(@RequestBody EstagioRequest estagioRequest) {
+        System.out.println("Request recebido: " + estagioRequest);
         return estagioService.salvar(estagioRequest);
     }
 

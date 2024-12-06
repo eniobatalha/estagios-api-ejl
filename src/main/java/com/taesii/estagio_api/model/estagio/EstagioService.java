@@ -19,12 +19,11 @@ public class EstagioService {
     private final AgenteIntegracaoRepository agenteIntegracaoRepository;
 
     public EstagioService(
-        EstagioRepository estagioRepository,
-        EstudanteRepository estudanteRepository,
-        OrientadorRepository orientadorRepository,
-        EmpresaConcedenteRepository empresaConcedenteRepository,
-        AgenteIntegracaoRepository agenteIntegracaoRepository
-    ) {
+            EstagioRepository estagioRepository,
+            EstudanteRepository estudanteRepository,
+            OrientadorRepository orientadorRepository,
+            EmpresaConcedenteRepository empresaConcedenteRepository,
+            AgenteIntegracaoRepository agenteIntegracaoRepository) {
         this.estagioRepository = estagioRepository;
         this.estudanteRepository = estudanteRepository;
         this.orientadorRepository = orientadorRepository;
@@ -45,17 +44,29 @@ public class EstagioService {
 
     // Salva um novo estágio
     public Estagio salvar(EstagioRequest estagioRequest) {
+        System.out.println("Recebendo request para salvar estágio: " + estagioRequest);
         // Busca entidades relacionadas
         var estudante = estudanteRepository.findById(estagioRequest.getEstudanteId())
-                .orElseThrow(() -> new RuntimeException("Estudante não encontrado com ID: " + estagioRequest.getEstudanteId()));
+                .orElseThrow(() -> new RuntimeException(
+                        "Estudante não encontrado com ID: " + estagioRequest.getEstudanteId()));
+        System.out.println("Estudante encontrado: " + estudante);
+
         var orientador = orientadorRepository.findById(estagioRequest.getOrientadorId())
-                .orElseThrow(() -> new RuntimeException("Orientador não encontrado com ID: " + estagioRequest.getOrientadorId()));
+                .orElseThrow(() -> new RuntimeException(
+                        "Orientador não encontrado com ID: " + estagioRequest.getOrientadorId()));
+        System.out.println("Orientador encontrado: " + orientador);
+
         var empresaConcedente = empresaConcedenteRepository.findById(estagioRequest.getEmpresaConcedenteId())
-                .orElseThrow(() -> new RuntimeException("Empresa Concedente não encontrada com ID: " + estagioRequest.getEmpresaConcedenteId()));
+                .orElseThrow(() -> new RuntimeException(
+                        "Empresa Concedente não encontrada com ID: " + estagioRequest.getEmpresaConcedenteId()));
+        System.out.println("Empresa Concedente encontrada: " + empresaConcedente);
+
         var agenteIntegracao = estagioRequest.getAgenteIntegracaoId() != null
                 ? agenteIntegracaoRepository.findById(estagioRequest.getAgenteIntegracaoId())
-                  .orElseThrow(() -> new RuntimeException("Agente de Integração não encontrado com ID: " + estagioRequest.getAgenteIntegracaoId()))
+                        .orElseThrow(() -> new RuntimeException("Agente de Integração não encontrado com ID: "
+                                + estagioRequest.getAgenteIntegracaoId()))
                 : null;
+        System.out.println("Agente de Integração encontrado: " + agenteIntegracao);
 
         // Constrói e salva o estágio
         Estagio estagio = estagioRequest.build(estudante, orientador, empresaConcedente, agenteIntegracao);
