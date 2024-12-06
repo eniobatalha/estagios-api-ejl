@@ -46,25 +46,25 @@ public class EstagioService {
     public Estagio salvar(EstagioRequest estagioRequest) {
         System.out.println("Recebendo request para salvar estágio: " + estagioRequest);
         // Busca entidades relacionadas
-        var estudante = estudanteRepository.findById(estagioRequest.getEstudanteId())
+        var estudante = estudanteRepository.findById(estagioRequest.getIdEstudante())
                 .orElseThrow(() -> new RuntimeException(
-                        "Estudante não encontrado com ID: " + estagioRequest.getEstudanteId()));
+                        "Estudante não encontrado com ID: " + estagioRequest.getIdEstudante()));
         System.out.println("Estudante encontrado: " + estudante);
 
-        var orientador = orientadorRepository.findById(estagioRequest.getOrientadorId())
+        var orientador = orientadorRepository.findById(estagioRequest.getIdOrientador())
                 .orElseThrow(() -> new RuntimeException(
-                        "Orientador não encontrado com ID: " + estagioRequest.getOrientadorId()));
+                        "Orientador não encontrado com ID: " + estagioRequest.getIdOrientador()));
         System.out.println("Orientador encontrado: " + orientador);
 
-        var empresaConcedente = empresaConcedenteRepository.findById(estagioRequest.getEmpresaConcedenteId())
+        var empresaConcedente = empresaConcedenteRepository.findById(estagioRequest.getIdEmpresaConcedente())
                 .orElseThrow(() -> new RuntimeException(
-                        "Empresa Concedente não encontrada com ID: " + estagioRequest.getEmpresaConcedenteId()));
+                        "Empresa Concedente não encontrada com ID: " + estagioRequest.getIdEmpresaConcedente()));
         System.out.println("Empresa Concedente encontrada: " + empresaConcedente);
 
-        var agenteIntegracao = estagioRequest.getAgenteIntegracaoId() != null
-                ? agenteIntegracaoRepository.findById(estagioRequest.getAgenteIntegracaoId())
+        var agenteIntegracao = estagioRequest.getIdAgenteIntegracao() != null
+                ? agenteIntegracaoRepository.findById(estagioRequest.getIdAgenteIntegracao())
                         .orElseThrow(() -> new RuntimeException("Agente de Integração não encontrado com ID: "
-                                + estagioRequest.getAgenteIntegracaoId()))
+                                + estagioRequest.getIdAgenteIntegracao()))
                 : null;
         System.out.println("Agente de Integração encontrado: " + agenteIntegracao);
 

@@ -19,15 +19,15 @@ import lombok.NoArgsConstructor;
 public class EstagioRequest {
 
     @NotNull(message = "O ID do estudante é de preenchimento obrigatório.")
-    private Long estudanteId;
+    private Long idEstudante;
 
     @NotNull(message = "O ID do orientador é de preenchimento obrigatório.")
-    private Long orientadorId;
+    private Long idOrientador;
 
     @NotNull(message = "O ID da empresa concedente é de preenchimento obrigatório.")
-    private Long empresaConcedenteId;
+    private Long idEmpresaConcedente;
 
-    private Long agenteIntegracaoId;
+    private Long idAgenteIntegracao;
 
     @NotNull(message = "A descrição do estágio é de preenchimento obrigatório.")
     @NotBlank(message = "A descrição do estágio é de preenchimento obrigatório.")
