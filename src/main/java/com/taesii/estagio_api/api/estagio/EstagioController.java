@@ -27,8 +27,8 @@ public class EstagioController {
     }
 
     @PostMapping
-    public Estagio salvar(@RequestBody Estagio estagio) {
-        return estagioService.salvar(estagio);
+    public Estagio salvar(@RequestBody EstagioRequest estagioRequest) {
+        return estagioService.salvar(estagioRequest);
     }
 
     @PatchMapping("/{id}")

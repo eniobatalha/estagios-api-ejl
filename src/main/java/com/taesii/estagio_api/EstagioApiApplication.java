@@ -17,7 +17,7 @@ public class EstagioApiApplication {
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
-			public void addCorsMappings(CorsRegistry registry) {
+			public void addCorsMappings(@SuppressWarnings("null") CorsRegistry registry) {
 				registry.addMapping("/**") // Permite todas as rotas
 						.allowedOrigins("http://localhost:3000") // Permite requisições do frontend no localhost:3000
 						.allowedMethods("GET", "POST", "PATCH", "PUT", "DELETE") // Métodos HTTP permitidos
