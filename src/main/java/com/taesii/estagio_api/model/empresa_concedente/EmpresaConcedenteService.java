@@ -16,6 +16,11 @@ public class EmpresaConcedenteService {
         return empresaConcedenteRepository.findAll();
     }
 
+    public EmpresaConcedente buscarPorId(Long id) {
+        return empresaConcedenteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Empresa Concedente não encontrado com ID: " + id));
+    }
+
     public EmpresaConcedente salvar(EmpresaConcedente empresaConcedente) {
         return empresaConcedenteRepository.save(empresaConcedente);
     }

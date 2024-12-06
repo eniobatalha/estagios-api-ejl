@@ -16,6 +16,11 @@ public class EstagioService {
         return estagioRepository.findAll();
     }
 
+    public Estagio buscarPorId(Long id) {
+        return estagioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Estágio não encontrado com ID: " + id));
+    }
+
     public Estagio salvar(Estagio estagio) {
         return estagioRepository.save(estagio);
     }

@@ -16,6 +16,11 @@ public class OrientadorService {
         return orientadorRepository.findAll();
     }
 
+    public Orientador buscarPorId(Long id) {
+        return orientadorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Orientador não encontrado com ID: " + id));
+    }
+
     public Orientador salvar(Orientador orientador) {
         return orientadorRepository.save(orientador);
     }

@@ -21,6 +21,11 @@ public class EmpresaConcedenteController {
         return empresaConcedenteService.listarTodos();
     }
 
+    @GetMapping("/{id}")
+    public EmpresaConcedente buscarPorId(@PathVariable Long id) {
+        return empresaConcedenteService.buscarPorId(id);
+    }
+
     @PostMapping
     public EmpresaConcedente salvar(@RequestBody EmpresaConcedente empresaConcedente) {
         return empresaConcedenteService.salvar(empresaConcedente);

@@ -16,6 +16,11 @@ public class AgenteIntegracaoService {
         return agenteIntegracaoRepository.findAll();
     }
 
+    public AgenteIntegracao buscarPorId(Long id) {
+        return agenteIntegracaoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Agente de Integração não encontrado com ID: " + id));
+    }
+
     public AgenteIntegracao salvar(AgenteIntegracao agenteIntegracao) {
         return agenteIntegracaoRepository.save(agenteIntegracao);
     }

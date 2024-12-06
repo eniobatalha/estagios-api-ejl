@@ -26,6 +26,11 @@ public class AgenteIntegracaoController {
         return agenteIntegracaoService.salvar(agenteIntegracao);
     }
 
+    @GetMapping("/{id}")
+    public AgenteIntegracao buscarPorId(@PathVariable Long id) {
+        return agenteIntegracaoService.buscarPorId(id);
+    }
+
     @PatchMapping("/{id}")
     public AgenteIntegracao atualizar(@PathVariable Long id,
             @RequestBody AgenteIntegracao agenteIntegracaoAtualizado) {

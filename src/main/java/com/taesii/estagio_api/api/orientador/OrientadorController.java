@@ -21,6 +21,11 @@ public class OrientadorController {
         return orientadorService.listarTodos();
     }
 
+    @GetMapping("/{id}")
+    public Orientador buscarPorId(@PathVariable Long id) {
+        return orientadorService.buscarPorId(id);
+    }
+
     @PostMapping
     public Orientador salvar(@RequestBody Orientador orientador) {
         return orientadorService.salvar(orientador);

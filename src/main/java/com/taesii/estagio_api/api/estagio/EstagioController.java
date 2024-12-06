@@ -21,6 +21,11 @@ public class EstagioController {
         return estagioService.listarTodos();
     }
 
+    @GetMapping("/{id}")
+    public Estagio buscarPorId(@PathVariable Long id) {
+        return estagioService.buscarPorId(id);
+    }
+
     @PostMapping
     public Estagio salvar(@RequestBody Estagio estagio) {
         return estagioService.salvar(estagio);
